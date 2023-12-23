@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 
@@ -12,7 +12,7 @@ public static class StringsUtil
     /// <param name="input">User enter-able string</param>
     /// <remarks>
     /// Due to different languages having a different character input keyboard, we may encounter full-width characters.
-    /// Strip things down to a-z,0-9 so that we can permissibly compare these user input strings to our magic strings.
+    /// Strip things down to a-z,0-9 so that we can permissibly compare these user input strings to our $BANNED strings.
     /// </remarks>
     public static string Sanitize(string input)
     {
@@ -21,8 +21,8 @@ public static class StringsUtil
         return string.Concat(sanitized.Select(char.ToLower));
     }
 
-    private static readonly char[] Blacklist = ['.', '\\', '/', ',', '*', ';', '．', '・', '。'];
-    private static readonly string[] TLD = ["tv", "gg", "yt"];
+    private static readonly char[] Blacklist = ['\\', '/', ',', '*', ';', '．', '・', '。'];
+    private static readonly string[] TLD = ["tv", "yt"];
     private static readonly string[] TLD2 = ["com", "org", "net"];
 
     /// <summary>
