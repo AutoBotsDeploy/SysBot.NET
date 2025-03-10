@@ -85,14 +85,14 @@ public sealed partial class Main : Form
         MinimumSize = Size;
         PG_Hub.SelectedObject = RunningEnvironment.Config;
 
-        var routines = Enum.GetValues<PokeRoutineType>().Where(z => RunningEnvironment.SupportsRoutine(z));
+        var routines = ((PokeRoutineType[])Enum.GetValues(typeof(PokeRoutineType))).Where(z => RunningEnvironment.SupportsRoutine(z));
         var list = routines.Select(z => new ComboItem(z.ToString(), (int)z)).ToArray();
         CB_Routine.DisplayMember = nameof(ComboItem.Text);
         CB_Routine.ValueMember = nameof(ComboItem.Value);
         CB_Routine.DataSource = list;
         CB_Routine.SelectedValue = (int)PokeRoutineType.FlexTrade; // default option
 
-        var protocols = Enum.GetValues<SwitchProtocol>();
+        var protocols = (SwitchProtocol[])Enum.GetValues(typeof(SwitchProtocol));
         var listP = protocols.Select(z => new ComboItem(z.ToString(), (int)z)).ToArray();
         CB_Protocol.DisplayMember = nameof(ComboItem.Text);
         CB_Protocol.ValueMember = nameof(ComboItem.Value);
@@ -277,5 +277,25 @@ public sealed partial class Main : Form
     private void CB_Protocol_SelectedIndexChanged(object sender, EventArgs e)
     {
         TB_IP.Visible = CB_Protocol.SelectedIndex == 0;
+    }
+
+    private void RTB_Logs_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void PG_Hub_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void Main_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void PG_Hub_Click_1(object sender, EventArgs e)
+    {
+
     }
 }
