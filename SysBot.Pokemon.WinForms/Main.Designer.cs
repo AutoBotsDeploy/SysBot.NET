@@ -36,7 +36,7 @@ namespace SysBot.Pokemon.WinForms
             FLP_Bots = new System.Windows.Forms.FlowLayoutPanel();
             TB_IP = new System.Windows.Forms.TextBox();
             CB_Routine = new System.Windows.Forms.ComboBox();
-            NUD_Port = new System.Windows.Forms.NumericUpDown();
+            NUD_Port = new System.Windows.Forms.TextBox();
             B_New = new System.Windows.Forms.Button();
             Tab_Hub = new System.Windows.Forms.TabPage();
             PG_Hub = new System.Windows.Forms.PropertyGrid();
@@ -46,7 +46,6 @@ namespace SysBot.Pokemon.WinForms
             B_Start = new System.Windows.Forms.Button();
             TC_Main.SuspendLayout();
             Tab_Bots.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)NUD_Port).BeginInit();
             Tab_Hub.SuspendLayout();
             Tab_Logs.SuspendLayout();
             SuspendLayout();
@@ -66,7 +65,6 @@ namespace SysBot.Pokemon.WinForms
             // 
             // Tab_Bots
             // 
-            Tab_Bots.BackColor = System.Drawing.Color.White;
             Tab_Bots.Controls.Add(CB_Protocol);
             Tab_Bots.Controls.Add(FLP_Bots);
             Tab_Bots.Controls.Add(TB_IP);
@@ -79,13 +77,11 @@ namespace SysBot.Pokemon.WinForms
             Tab_Bots.Size = new System.Drawing.Size(525, 329);
             Tab_Bots.TabIndex = 0;
             Tab_Bots.Text = "Bots";
+            Tab_Bots.UseVisualStyleBackColor = true;
             // 
             // CB_Protocol
             // 
-            CB_Protocol.BackColor = System.Drawing.Color.Black;
             CB_Protocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            CB_Protocol.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            CB_Protocol.ForeColor = System.Drawing.Color.Lime;
             CB_Protocol.FormattingEnabled = true;
             CB_Protocol.Location = new System.Drawing.Point(289, 6);
             CB_Protocol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -97,10 +93,7 @@ namespace SysBot.Pokemon.WinForms
             // FLP_Bots
             // 
             FLP_Bots.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            FLP_Bots.BackColor = System.Drawing.Color.Black;
             FLP_Bots.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            FLP_Bots.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            FLP_Bots.ForeColor = System.Drawing.Color.Lime;
             FLP_Bots.Location = new System.Drawing.Point(0, 37);
             FLP_Bots.Margin = new System.Windows.Forms.Padding(0);
             FLP_Bots.Name = "FLP_Bots";
@@ -110,10 +103,8 @@ namespace SysBot.Pokemon.WinForms
             // 
             // TB_IP
             // 
-            TB_IP.BackColor = System.Drawing.Color.White;
-            TB_IP.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            TB_IP.ForeColor = System.Drawing.Color.DarkGreen;
-            TB_IP.Location = new System.Drawing.Point(74, 7);
+            TB_IP.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            TB_IP.Location = new System.Drawing.Point(74, 8);
             TB_IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             TB_IP.Name = "TB_IP";
             TB_IP.Size = new System.Drawing.Size(134, 20);
@@ -122,10 +113,7 @@ namespace SysBot.Pokemon.WinForms
             // 
             // CB_Routine
             // 
-            CB_Routine.BackColor = System.Drawing.Color.Black;
             CB_Routine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            CB_Routine.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            CB_Routine.ForeColor = System.Drawing.Color.Lime;
             CB_Routine.FormattingEnabled = true;
             CB_Routine.Location = new System.Drawing.Point(364, 6);
             CB_Routine.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -135,20 +123,17 @@ namespace SysBot.Pokemon.WinForms
             // 
             // NUD_Port
             // 
-            NUD_Port.BackColor = System.Drawing.Color.White;
-            NUD_Port.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            NUD_Port.ForeColor = System.Drawing.Color.FromArgb(192, 0, 0);
-            NUD_Port.Location = new System.Drawing.Point(215, 7);
+            NUD_Port.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            NUD_Port.Location = new System.Drawing.Point(215, 8);
             NUD_Port.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            NUD_Port.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
             NUD_Port.Name = "NUD_Port";
-            NUD_Port.Size = new System.Drawing.Size(68, 20);
+            NUD_Port.Size = new System.Drawing.Size(67, 20);
             NUD_Port.TabIndex = 6;
-            NUD_Port.Value = new decimal(new int[] { 6000, 0, 0, 0 });
+            NUD_Port.Text = "6000";
+            NUD_Port.ReadOnly = true;
             // 
             // B_New
             // 
-            B_New.FlatStyle = System.Windows.Forms.FlatStyle.System;
             B_New.Location = new System.Drawing.Point(4, 7);
             B_New.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             B_New.Name = "B_New";
@@ -167,35 +152,19 @@ namespace SysBot.Pokemon.WinForms
             Tab_Hub.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Tab_Hub.Size = new System.Drawing.Size(525, 329);
             Tab_Hub.TabIndex = 2;
-            Tab_Hub.Text = "Settings";
+            Tab_Hub.Text = "Hub";
             Tab_Hub.UseVisualStyleBackColor = true;
             // 
             // PG_Hub
             // 
-            PG_Hub.BackColor = System.Drawing.Color.White;
-            PG_Hub.CategoryForeColor = System.Drawing.Color.Lime;
-            PG_Hub.CategorySplitterColor = System.Drawing.Color.Green;
-            PG_Hub.CommandsBackColor = System.Drawing.Color.Black;
-            PG_Hub.CommandsBorderColor = System.Drawing.Color.Red;
-            PG_Hub.CommandsForeColor = System.Drawing.Color.Yellow;
-            PG_Hub.DisabledItemForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            PG_Hub.BackColor = System.Drawing.SystemColors.Control;
             PG_Hub.Dock = System.Windows.Forms.DockStyle.Fill;
-            PG_Hub.HelpBackColor = System.Drawing.Color.White;
-            PG_Hub.HelpBorderColor = System.Drawing.Color.White;
-            PG_Hub.HelpForeColor = System.Drawing.Color.Black;
-            PG_Hub.LineColor = System.Drawing.Color.FromArgb(50, 50, 50);
             PG_Hub.Location = new System.Drawing.Point(4, 3);
             PG_Hub.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             PG_Hub.Name = "PG_Hub";
             PG_Hub.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            PG_Hub.SelectedItemWithFocusBackColor = System.Drawing.Color.ForestGreen;
-            PG_Hub.SelectedItemWithFocusForeColor = System.Drawing.Color.Black;
             PG_Hub.Size = new System.Drawing.Size(517, 323);
             PG_Hub.TabIndex = 0;
-            PG_Hub.ViewBackColor = System.Drawing.Color.Black;
-            PG_Hub.ViewBorderColor = System.Drawing.Color.White;
-            PG_Hub.ViewForeColor = System.Drawing.Color.ForestGreen;
-            PG_Hub.Click += PG_Hub_Click_1;
             // 
             // Tab_Logs
             // 
@@ -205,14 +174,13 @@ namespace SysBot.Pokemon.WinForms
             Tab_Logs.Name = "Tab_Logs";
             Tab_Logs.Size = new System.Drawing.Size(525, 329);
             Tab_Logs.TabIndex = 1;
-            Tab_Logs.Text = "Logging";
+            Tab_Logs.Text = "Logs";
             Tab_Logs.UseVisualStyleBackColor = true;
             // 
             // RTB_Logs
             // 
-            RTB_Logs.BackColor = System.Drawing.Color.Black;
             RTB_Logs.Dock = System.Windows.Forms.DockStyle.Fill;
-            RTB_Logs.ForeColor = System.Drawing.Color.FromArgb(0, 192, 0);
+            RTB_Logs.HideSelection = false;
             RTB_Logs.Location = new System.Drawing.Point(0, 0);
             RTB_Logs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             RTB_Logs.Name = "RTB_Logs";
@@ -220,64 +188,52 @@ namespace SysBot.Pokemon.WinForms
             RTB_Logs.Size = new System.Drawing.Size(525, 329);
             RTB_Logs.TabIndex = 0;
             RTB_Logs.Text = "";
-            RTB_Logs.TextChanged += RTB_Logs_TextChanged;
             // 
             // B_Stop
             // 
             B_Stop.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            B_Stop.BackColor = System.Drawing.Color.Firebrick;
-            B_Stop.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            B_Stop.Location = new System.Drawing.Point(419, 0);
+            B_Stop.Location = new System.Drawing.Point(417, 0);
             B_Stop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             B_Stop.Name = "B_Stop";
             B_Stop.Size = new System.Drawing.Size(69, 23);
             B_Stop.TabIndex = 4;
-            B_Stop.Text = "Stop";
-            B_Stop.UseVisualStyleBackColor = false;
+            B_Stop.Text = "Stop All";
+            B_Stop.UseVisualStyleBackColor = true;
             B_Stop.Click += B_Stop_Click;
             // 
             // B_Start
             // 
             B_Start.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            B_Start.BackColor = System.Drawing.Color.ForestGreen;
-            B_Start.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            B_Start.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            B_Start.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            B_Start.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            B_Start.ForeColor = System.Drawing.SystemColors.ControlText;
-            B_Start.Location = new System.Drawing.Point(343, 0);
+            B_Start.Location = new System.Drawing.Point(341, 0);
             B_Start.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             B_Start.Name = "B_Start";
             B_Start.Size = new System.Drawing.Size(69, 23);
             B_Start.TabIndex = 3;
-            B_Start.Text = "Start";
-            B_Start.UseVisualStyleBackColor = false;
+            B_Start.Text = "Start All";
+            B_Start.UseVisualStyleBackColor = true;
             B_Start.Click += B_Start_Click;
             // 
             // Main
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.Silver;
             ClientSize = new System.Drawing.Size(533, 357);
             Controls.Add(B_Stop);
             Controls.Add(B_Start);
             Controls.Add(TC_Main);
-            ForeColor = System.Drawing.SystemColors.ControlText;
             Icon = Resources.icon;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Main";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "PKMN Trading Bot (version 2025.03.10)";
+            Text = "SysBot: Pokémon";
             FormClosing += Main_FormClosing;
-            Load += Main_Load;
             TC_Main.ResumeLayout(false);
             Tab_Bots.ResumeLayout(false);
             Tab_Bots.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)NUD_Port).EndInit();
             Tab_Hub.ResumeLayout(false);
             Tab_Logs.ResumeLayout(false);
             ResumeLayout(false);
+
         }
 
         #endregion
@@ -291,7 +247,7 @@ namespace SysBot.Pokemon.WinForms
         private System.Windows.Forms.Button B_Start;
         private System.Windows.Forms.TextBox TB_IP;
         private System.Windows.Forms.ComboBox CB_Routine;
-        private System.Windows.Forms.NumericUpDown NUD_Port;
+        private System.Windows.Forms.TextBox NUD_Port;
         private System.Windows.Forms.Button B_New;
         private System.Windows.Forms.FlowLayoutPanel FLP_Bots;
         private System.Windows.Forms.ComboBox CB_Protocol;

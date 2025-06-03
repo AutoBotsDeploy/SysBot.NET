@@ -52,7 +52,6 @@ public static class AutoLegalityWrapper
             settings.HOMETransfer.HOMETransferTrackerNotPresent = Severity.Fishy;
 
         settings.Handler.CheckActiveHandler = false;
-        settings.Nickname.Disable();
 
         // We need all the encounter types present, so add the missing ones at the end.
         var missing = EncounterPriority.Except(cfg.PrioritizeEncounters);
@@ -69,15 +68,12 @@ public static class AutoLegalityWrapper
 
         // Seed the Trainer Database with enough fake save files so that we return a generation sensitive format when needed.
         var fallback = GetDefaultTrainer(cfg);
-        for (byte generation = 1; generation <= PKX.Generation; generation++)
+        for (byte generation = 1; generation <= Latest.Generation; generation++)
         {
-            var versions = GameUtil.GetVersionsInGeneration(generation, PKX.Version);
+            var versions = GameUtil.GetVersionsInGeneration(generation, Latest.Version);
             foreach (var version in versions)
                 RegisterIfNoneExist(fallback, generation, version);
         }
-        // Manually register for LGP/E since Gen7 above will only register the 3DS versions.
-        RegisterIfNoneExist(fallback, 7, GameVersion.GP);
-        RegisterIfNoneExist(fallback, 7, GameVersion.GE);
     }
 
     private static SimpleTrainerInfo GetDefaultTrainer(LegalitySettings cfg)
