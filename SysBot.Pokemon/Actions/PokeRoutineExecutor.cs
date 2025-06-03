@@ -138,7 +138,7 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
         bool quit = false;
         var user = poke.Trainer;
         var isDistribution = poke.Type == PokeTradeType.Random;
-        var useridmsg = isDistribution ? "" : $" {user.ID}";
+        var useridmsg = isDistribution ? "" : $"{user.ID}";
         var list = isDistribution ? PreviousUsersDistribution : PreviousUsers;
 
         // Matches to a list of banned NIDs, in case the user ever manages to enter a trade.
@@ -148,7 +148,7 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
             if (AbuseSettings.BlockDetectedBannedUser && bot is PokeRoutineExecutor8SWSH)
                 await BlockUser(token).ConfigureAwait(false);
 
-            var msg = $"{user.TrainerName}{useridmsg} is a banned user, and was encountered in-game using OT: {TrainerName}.";
+            var msg = $"{user.TrainerName} {useridmsg} is a banned user, and was encountered in-game using OT: {TrainerName}.";
             if (!string.IsNullOrWhiteSpace(entry.Comment))
                 msg += $"\nUser was banned for: {entry.Comment}";
             if (!string.IsNullOrWhiteSpace(AbuseSettings.BannedIDMatchEchoMention))
@@ -170,7 +170,7 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
             {
                 var wait = TimeSpan.FromMinutes(cd) - delta;
                 poke.Notifier.SendNotification(bot, poke, $"You are still on trade cooldown, and cannot trade for another {wait.TotalMinutes:F1} minute(s).");
-                var msg = $"Found {user.TrainerName}{useridmsg} ignoring the {cd} minute trade cooldown. Last encountered {delta.TotalMinutes:F1} minutes ago.";
+                var msg = $"Found {user.TrainerName} {useridmsg} ignoring the {cd} minute trade cooldown. Last encountered {delta.TotalMinutes:F1} minutes ago.";
                 if (AbuseSettings.EchoNintendoOnlineIDCooldown)
                     msg += $"\nID: {TrainerNID}";
                 if (!string.IsNullOrWhiteSpace(AbuseSettings.CooldownAbuseEchoMention))
@@ -197,9 +197,9 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
                     quit = true;
                 }
 
-                var msg = $"\n# User caught trading with a different Discord Accounts\n-----------------------------------------\n**Discord Mention:** <@{useridmsg}>\n**Discord Username:** {user.TrainerName}\n**Discord ID:** {useridmsg}\n**OT:** {TrainerName}\n## They traded with:\n**Discord Mention:** <@{previous.RemoteID}>\n**Discord Username:** {previous.Name}\n**Discord ID:** {previous.RemoteID}\n## {delta.TotalMinutes:F1} minutes ago!\n-----------------------------------------";
+                var msg = $"\n# User caught trading with different Discord Accounts\n-----------------------------------------\n**Discord Mention:** <@{useridmsg}>\n**Discord Username:** {user.TrainerName}\n**Discord ID:** {useridmsg}\n**OT:** {TrainerName}\n## They traded with:\n**Discord Mention:** <@{previous.RemoteID}>\n**Discord Username:** {previous.Name}\n**Discord ID:** {previous.RemoteID}\n## {delta.TotalMinutes:F1} minutes ago!\n-----------------------------------------";
                 if (AbuseSettings.EchoNintendoOnlineIDMulti)
-                    msg += $"**NID:** {TrainerNID}\n-----------------------------------------\nTo remove this ban, use this command:\n```$forget {TrainerNID}```\n";
+                    msg += $"\n**NID:** {TrainerNID}\n-----------------------------------------\nTo remove this ban, use this command:\n```$forget {TrainerNID}```\n";
                 if (!string.IsNullOrWhiteSpace(AbuseSettings.MultiAbuseEchoMention))
                     msg = $"{AbuseSettings.MultiAbuseEchoMention} {msg}";
                 EchoUtil.Echo(msg);
@@ -227,9 +227,9 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
                     quit = true;
                 }
 
-                var msg = $"\n# User caught trading with a different OT's\n-----------------------------------------\n**Discord Mention:** <@{useridmsg}>\n**Discord Username:** {user.TrainerName}\n**Discord ID:** {useridmsg}\n**Old OT:** {previous_remote.Name}\n**New OT:** {TrainerName}";
+                var msg = $"\n# User caught trading with different OT's\n-----------------------------------------\n**Discord Mention:** <@{useridmsg}>\n**Discord Username:** {user.TrainerName}\n**Discord ID:** {useridmsg}\n**Old OT:** {previous_remote.Name}\n**New OT:** {TrainerName}";
                 if (AbuseSettings.EchoNintendoOnlineIDMultiRecipients)
-                    msg += $"**NID:** {TrainerNID}\n-----------------------------------------\nTo remove this ban, use this command:\n```$forget {TrainerNID}```\n";
+                    msg += $"\n**NID:** {TrainerNID}\n-----------------------------------------\nTo remove this ban, use this command:\n```$forget {TrainerNID}```\n";
                 if (!string.IsNullOrWhiteSpace(AbuseSettings.MultiRecipientEchoMention))
                     msg = $"{AbuseSettings.MultiRecipientEchoMention} {msg}";
                 EchoUtil.Echo(msg);
