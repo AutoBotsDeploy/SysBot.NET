@@ -279,8 +279,9 @@ public class PokeTradeBotBS(PokeTradeHub<PB8> Hub, PokeBotState Config) : PokeRo
 
         var tradePartner = await GetTradePartnerInfo(token).ConfigureAwait(false);
         var trainerNID = GetFakeNID(tradePartner.TrainerName, tradePartner.TrainerID);
+        // Cleaner Discord logs for BDSP WISDOM
         RecordUtil<PokeTradeBotBS>.Record($"Initiating\t{trainerNID:X16}\t{tradePartner.TrainerName}\t{poke.Trainer.TrainerName}\t{poke.Trainer.ID}\t{poke.ID}\t{toSend.EncryptionConstant:X8}");
-        Log($"Found Link Trade partner: {tradePartner.TrainerName}-{tradePartner.TID7} (ID: {trainerNID}");
+        Log($"Found Link Trade partner:\n-----------------------------------------\n**Discord Mention:** <@{poke.Trainer.ID}>\n**Discord Username:** {poke.Trainer.TrainerName}\n**Discord ID:** {poke.Trainer.ID}\n**OT:** {tradePartner.TrainerName}\n**TID:** {tradePartner.TID7}\n**SID:** {tradePartner.SID7}\n**NID:** {trainerNID}\n-----------------------------------------\n");
 
         var partnerCheck = await CheckPartnerReputation(this, poke, trainerNID, tradePartner.TrainerName, AbuseSettings, token);
         if (partnerCheck != PokeTradeResult.Success)

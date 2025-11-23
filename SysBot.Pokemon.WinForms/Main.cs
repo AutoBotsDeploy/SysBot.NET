@@ -61,9 +61,9 @@ public sealed partial class Main : Form
     {
         ProgramMode.SWSH => new PokeBotRunnerImpl<PK8>(cfg.Hub, new BotFactory8SWSH()),
         ProgramMode.BDSP => new PokeBotRunnerImpl<PB8>(cfg.Hub, new BotFactory8BS()),
-        ProgramMode.LA   => new PokeBotRunnerImpl<PA8>(cfg.Hub, new BotFactory8LA()),
-        ProgramMode.SV   => new PokeBotRunnerImpl<PK9>(cfg.Hub, new BotFactory9SV()),
-        ProgramMode.LZA  => new PokeBotRunnerImpl<PA9>(cfg.Hub, new BotFactory9LZA()),
+        ProgramMode.LA => new PokeBotRunnerImpl<PA8>(cfg.Hub, new BotFactory8LA()),
+        ProgramMode.SV => new PokeBotRunnerImpl<PK9>(cfg.Hub, new BotFactory9SV()),
+        ProgramMode.LZA => new PokeBotRunnerImpl<PA9>(cfg.Hub, new BotFactory9LZA()),
         _ => throw new IndexOutOfRangeException("Unsupported mode."),
     };
 
@@ -284,5 +284,15 @@ public sealed partial class Main : Form
 
         if (isWifi)
             NUD_Port.Text = "6000";
+    }
+
+    private void Main_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void FLP_Bots_Paint(object sender, PaintEventArgs e)
+    {
+
     }
 }

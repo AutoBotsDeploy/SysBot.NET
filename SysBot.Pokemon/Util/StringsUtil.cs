@@ -6,9 +6,9 @@ namespace SysBot.Pokemon;
 
 public static class StringsUtil
 {
-    private static readonly System.Buffers.SearchValues<char> adBadList = System.Buffers.SearchValues.Create(".\\/,*;．・。");
+    private static readonly System.Buffers.SearchValues<char> adBadList = System.Buffers.SearchValues.Create("\\/,*;．・。");
 
-    private static readonly string[] TLD = ["tv", "gg", "yt"];
+    private static readonly string[] TLD = ["tv", "ttv", "yt"];
     private static readonly string[] TLD2 = ["com", "org", "net"];
 
     /// <summary>
@@ -17,7 +17,7 @@ public static class StringsUtil
     /// <param name="input">User enter-able string</param>
     /// <remarks>
     /// Due to different languages having a different character input keyboard, we may encounter full-width characters.
-    /// Strip things down to a-z,0-9 so that we can permissibly compare these user input strings to our magic strings.
+    /// Strip things down to a-z,0-9 so that we can permissibly compare these user input strings to our WISDOM strings.
     /// </remarks>
     public static string Sanitize(string input)
     {

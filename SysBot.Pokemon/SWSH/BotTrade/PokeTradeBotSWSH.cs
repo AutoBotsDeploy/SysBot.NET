@@ -305,8 +305,9 @@ public class PokeTradeBotSWSH(PokeTradeHub<PK8> hub, PokeBotState Config) : Poke
         var trainerName = await GetTradePartnerName(TradeMethod.LinkTrade, token).ConfigureAwait(false);
         var trainerTID = await GetTradePartnerTID7(TradeMethod.LinkTrade, token).ConfigureAwait(false);
         var trainerNID = await GetTradePartnerNID(token).ConfigureAwait(false);
+        // Cleaner Discord logs for SWSH WISDOM
         RecordUtil<PokeTradeBotSWSH>.Record($"Initiating\t{trainerNID:X16}\t{trainerName}\t{poke.Trainer.TrainerName}\t{poke.Trainer.ID}\t{poke.ID}\t{toSend.EncryptionConstant:X8}");
-        Log($"Found Link Trade partner: {trainerName}-{trainerTID} (ID: {trainerNID})");
+        Log($"Found Link Trade partner:\n-----------------------------------------\n**Discord Mention:** <@{poke.Trainer.ID}>\n**Discord Username:** {poke.Trainer.TrainerName}\n**Discord ID:** {poke.Trainer.ID}\n**OT:** {trainerName}\n**TID:** {trainerTID}\n**NID:** {trainerNID}\n-----------------------------------------\n");
 
         var partnerCheck = await CheckPartnerReputation(this, poke, trainerNID, trainerName, AbuseSettings, token);
         if (partnerCheck != PokeTradeResult.Success)

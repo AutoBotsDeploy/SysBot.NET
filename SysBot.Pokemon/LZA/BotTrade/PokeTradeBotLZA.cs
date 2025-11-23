@@ -321,8 +321,9 @@ public class PokeTradeBotLZA(PokeTradeHub<PA9> Hub, PokeBotState Config) : PokeR
         await Task.Delay(1_000 + Hub.Config.Timings.ExtraTimeOpenBox, token).ConfigureAwait(false);
 
         var tradePartner = await GetTradePartnerInfo(token).ConfigureAwait(false);
+        // Cleaner Discord Logs for LZA WISDOM
         RecordUtil<PokeTradeBotLZA>.Record($"Initiating\t{tradePartner.NID:X16}\t{tradePartner.TrainerName}\t{poke.Trainer.TrainerName}\t{poke.Trainer.ID}\t{poke.ID}\t{toSend.EncryptionConstant:X8}");
-        Log($"Found Link Trade partner: {tradePartner.TrainerName}-{tradePartner.TID7} (ID: {tradePartner.NID})");
+        Log($"Found Link Trade partner:\n-----------------------------------------\n**Discord Mention:** <@{poke.Trainer.ID}>\n**Discord Username:** {poke.Trainer.TrainerName}\n**Discord ID:** {poke.Trainer.ID}\n**OT:** {tradePartner.TrainerName}\n**TID:** {tradePartner.TID7}\n**SID:** {tradePartner.SID7}\n**NID:** {tradePartner.NID}\n-----------------------------------------\n");
 
         var partnerCheck = await CheckPartnerReputation(this, poke, tradePartner.NID, tradePartner.TrainerName, AbuseSettings, token);
         if (partnerCheck != PokeTradeResult.Success)
