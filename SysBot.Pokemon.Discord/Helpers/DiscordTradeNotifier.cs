@@ -20,14 +20,14 @@ public class DiscordTradeNotifier<T>(T Data, PokeTradeTrainerInfo Info, int Code
     public void TradeInitialize(PokeRoutineExecutor<T> routine, PokeTradeDetail<T> info)
     {
         var receive = Data.Species == 0 ? string.Empty : $" ({Data.Nickname})";
-        Trader.SendMessageAsync($"Starting the trade**{receive}. I'm typing in your code now! Your code is **{Code:0000 0000}**.\n").ConfigureAwait(false);
+        Trader.SendMessageAsync($"Starting the trade**{receive}**. I'm typing in your code now! Your code is **{Code:0000 0000}**.\n").ConfigureAwait(false);
     }
 
     public void TradeSearching(PokeRoutineExecutor<T> routine, PokeTradeDetail<T> info)
     {
         var name = Info.TrainerName;
         var trainer = string.IsNullOrEmpty(name) ? string.Empty : $", {name}";
-        Trader.SendMessageAsync($"\nIt's your turn. Press search now{trainer}! __You have **30 seconds**. Your trade code is:__:exclamation:**{Code:0000 0000}**:exclamtion: My IGN is **{routine.InGameName}**.").ConfigureAwait(false);
+        Trader.SendMessageAsync($"\nIt's your turn. Press search now{trainer}! __You have **30 seconds**. Your trade code is:__:exclamation:**{Code:0000 0000}**:exclamation: My IGN is **{routine.InGameName}**.").ConfigureAwait(false);
     }
 
     public void TradeCanceled(PokeRoutineExecutor<T> routine, PokeTradeDetail<T> info, PokeTradeResult msg)
