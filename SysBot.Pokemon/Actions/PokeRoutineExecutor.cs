@@ -197,7 +197,7 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
                     quit = true;
                 }
                 // Trade Abuse: User is using different Discord accounts WISDOM
-                var msg = $"\n# User caught trading with different Discord Accounts\n-----------------------------------------\n**Discord Mention:** <@{useridmsg}>\n**Discord Username:** {user.TrainerName}\n**Discord ID:** {useridmsg}\n**OT:** {TrainerName}\n## They traded with:\n**Discord Mention:** <@{previous.RemoteID}>\n**Discord Username:** {previous.Name}\n**Discord ID:** {previous.RemoteID}\n## {delta.TotalMinutes:F1} minutes ago!\n-----------------------------------------";
+                var msg = $"\n# User caught trading with different Discord Accounts\n-----------------------------------------\n**Discord Mention:** <@{useridmsg}>\n**Discord Username:** {user.TrainerName}\n**Discord ID:** {useridmsg}\n**OT:** {TrainerName}\n## They traded with:\n**Discord Mention:** <@{previous.RemoteID}>\n**Discord ID:** {previous.RemoteID}\n**OT:** {previous.Name}\n## {delta.TotalMinutes:F1} minutes ago!\n-----------------------------------------";
                 if (AbuseSettings.EchoNintendoOnlineIDMulti)
                     msg += $"\n**NID:** {TrainerNID}\n-----------------------------------------\nTo remove this ban, use this command:\n```$forget {TrainerNID}```\n";
                 if (!string.IsNullOrWhiteSpace(AbuseSettings.MultiAbuseEchoMention))
